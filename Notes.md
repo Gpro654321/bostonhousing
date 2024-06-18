@@ -16,6 +16,7 @@ source ./bostonhousepricing/bin/activate
 ```
 
 # add a requirements.txt file
+Be cautious with the version of python packages that are used
 
 # Create and clone a git repository
 A new repo can be created at github[github.com]

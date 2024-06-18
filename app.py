@@ -9,17 +9,18 @@ app=Flask(__name__)
 # Load the pickle file
 reg_pickle_file=open('./regression.pkl','rb')
 scalar_pickle_file=open('./scaling.pkl','rb')
-regmodel=pickle.load(pickle_file)
-scalar=pickle.load()
+regmodel=pickle.load(reg_pickle_file)
+
+scalar=pickle.load(scalar_pickle_file)
 
 # my home page
 @app.route('/')
-def home:
+def home():
     return render_template('home.html')
 
 
 # my prediction api 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict_api',methods=['POST'])
 def predict_api():
     data=request.json['data']
     print(data)
