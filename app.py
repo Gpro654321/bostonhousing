@@ -42,5 +42,25 @@ def predict_api():
     return jsonify(output[0])
 
 
+@app.route('/predict',methods=['POST'])
+def predict():
+    # get the data from the POST request and convert it into a list
+    data = [float(x) for x in request.float.values()]
+
+    # reshape the data into 1 row and x no of columns
+    reshaped_data = np.array(data).reshape(1,-1)
+
+    # standardize the data
+    final_input = scalar.transform(reshaped_data)
+
+    # see the final_input here
+    print(final_input)
+
+    # prediction
+    output=regmodel.predict(final_input)[0]
+
+    # send it back to the browser
+    return render_template("hoem.html", prediction_text="The predicted house price is {}".format(output))
+
 if __name__=="__main__":
     app.run(debug=True)
