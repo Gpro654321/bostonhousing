@@ -2,7 +2,6 @@
 
 # Tools and Requirements
 1. Github
-1. Heroku
 1. VSCode IDE
 
 # create a virtual environment in python
